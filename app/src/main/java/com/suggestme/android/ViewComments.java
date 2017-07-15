@@ -21,14 +21,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class ViewComments extends AppCompatActivity {
-
-    String getItemName=getIntent().getExtras().getString("itemName");
-    String getShopName=getIntent().getExtras().getString("shopName");
     ArrayAdapter adapter;
-    String  shopName;
+    String  itemShopName;
     String comments;
     int rating;
-    ListView listView = (ListView) findViewById(R.id.listComment);
+    ListView listView;
     public ArrayList<String> arr;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,9 +42,14 @@ public class ViewComments extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        listView = (ListView) findViewById(R.id.listComment);
+       final String getItemName=getIntent().getExtras().getString("itemName").trim();
+       final String getShopName=getIntent().getExtras().getString("shopName").trim();
+        final String getItemShop=getItemName+getShopName;
+       Log.e(getShopName, "get name");
 
         final DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference("comments");
-
+        arr = new ArrayList<>();
         ValueEventListener listener = new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -56,13 +58,15 @@ public class ViewComments extends AppCompatActivity {
                 for(DataSnapshot dataItem: dataSnapshot.getChildren() )
                 {
                     Comment item =dataItem.getValue(Comment.class);
-                    shopName=item.getShopName();
-
-                    if(shopName.equalsIgnoreCase(getShopName))
+                    itemShopName=item.getItemShop();
+                    Log.e(itemShopName, "item shop name");
+                    Log.e(getItemShop, " from intent");
+                    if(getItemShop.equals(itemShopName))
                     {
                         comments=item.getComment();
                         rating=item.getCommentRating();
                         arr.add("Comments: "+comments+"\n"+"Rating: "+rating);
+                        Log.e("Comments: "+comments+"\n"+"Rating: "+rating, "debug");
                         adapter.notifyDataSetChanged();
                         break;
                     }

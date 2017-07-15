@@ -24,7 +24,7 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 public class changeCredentials extends AppCompatActivity {
-     String email;
+    String email;
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     String name;
@@ -44,10 +44,18 @@ public class changeCredentials extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+
+        final EditText displayEdit=(EditText) findViewById(R.id.DisplayEdit);
+        final String getItemArr=getIntent().getExtras().getString("itemArr");
+        final String getShopName=getIntent().getExtras().getString("shopName");
+        final String getItemName=getIntent().getExtras().getString("itemName");
         //get user email
-        final String email = getIntent().getExtras().getString("userEmail");
+        final String email = getIntent().getExtras().getString("userEmail").trim();
+        Log.e(email, "get email");
+
         //pull user info according to the email
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
+
         //change name&pwd
         ValueEventListener listener = new ValueEventListener() {
             @Override
@@ -56,9 +64,12 @@ public class changeCredentials extends AppCompatActivity {
                 for(DataSnapshot dataItem: dataSnapshot.getChildren() )
                 {
                     User user=dataItem.getValue(User.class);
-                    if(user.getEmail()==email)
+                    Log.e(user.getEmail(), "database email");
+                    if((user.getEmail().trim()).equals(email))
                     {
-                       name=user.getUsername();//get username
+                        name=user.getUsername();//get username
+                        Log.e(name, "get user name");
+                        displayEdit.setText("Welcome "+name+" !");
                         pwd=user.getPassword();//get pwd
                     }
                 }
@@ -72,8 +83,8 @@ public class changeCredentials extends AppCompatActivity {
             }
         };
         mDatabase.addValueEventListener(listener);
-        EditText displayEdit=(EditText) findViewById(R.id.DisplayEdit);
-        displayEdit.setText("Welcome "+name+" !");
+
+
 
         Button changeusername=(Button) findViewById(R.id.changeUserNameButton);
         Button changePwd=(Button) findViewById(R.id.changePwdBtn);
@@ -94,6 +105,12 @@ public class changeCredentials extends AppCompatActivity {
                 Intent i2=new Intent(new Intent(changeCredentials.this, changePwd.class));
                 i2.putExtra("password", pwd);
                 i2.putExtra("email", email);
+                i2.putExtra("itemArr", getItemArr);
+                i2.putExtra("shopName", getShopName);
+                i2.putExtra("itemName", getItemName);
+
+
+
                 startActivity(i2);
                 finish();
             }

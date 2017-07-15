@@ -5,10 +5,12 @@ import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -36,6 +38,8 @@ public class changeUsername extends AppCompatActivity {
 
         final String email = getIntent().getExtras().getString("email");
         final String username = getIntent().getExtras().getString("username");
+        Log.e(email+ " "+username, "email and user name from change credentials");
+
         Button button1=(Button) findViewById(R.id.updateNameBtn);
         button1.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -43,7 +47,7 @@ public class changeUsername extends AppCompatActivity {
 
                 //get texts
                 EditText text1=(EditText) findViewById(R.id.enterNameTxt);
-                String result1 = text1.getText().toString();
+                final String result1 = text1.getText().toString().trim();
 
                 if(!result1.equals(username))
                 {
@@ -56,13 +60,17 @@ public class changeUsername extends AppCompatActivity {
 
                             for(DataSnapshot dataItem: dataSnapshot.getChildren() )
                             {
+
                                 User user=dataItem.getValue(User.class);
-                                if(user.getEmail()==email)
+                                if(user.getEmail().equals(email))
                                 {
-                                    //update pwd in the database
-                                    user.setUsername(username);
+                                    dataItem.child("username").getRef().setValue(result1);
+                                    //update username in the database
+                                    Log.e(result1, "new user name");
+                                    user.setUsername(result1);
                                 }
                             }
+                            Toast.makeText(changeUsername.this, "User name is updated!", Toast.LENGTH_LONG).show();
                         }
 
                         @Override

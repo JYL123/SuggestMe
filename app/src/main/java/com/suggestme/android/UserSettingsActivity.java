@@ -84,19 +84,19 @@ public class UserSettingsActivity extends AppCompatActivity {
         remove = (Button) findViewById(R.id.remove);
         signOut = (Button) findViewById(R.id.sign_out);
         //initialization--edittext
-        oldUsername = (EditText) findViewById(R.id.old_username);
-        newUsername = (EditText) findViewById(R.id.new_username);
-        oldEmail = (EditText) findViewById(R.id.old_email);
-        newEmail = (EditText) findViewById(R.id.new_email);
-        password = (EditText) findViewById(R.id.password);
-        newPassword = (EditText) findViewById(R.id.newPassword);
+//        oldUsername = (EditText) findViewById(R.id.old_username);
+//        newUsername = (EditText) findViewById(R.id.new_username);
+//        oldEmail = (EditText) findViewById(R.id.old_email);
+//        newEmail = (EditText) findViewById(R.id.new_email);
+//        password = (EditText) findViewById(R.id.password);
+   //     newPassword = (EditText) findViewById(R.id.newPassword);
 
-        oldUsername.setVisibility(View.GONE);
-        newUsername.setVisibility(View.GONE);
-        oldEmail.setVisibility(View.GONE);
-        newEmail.setVisibility(View.GONE);
-        password.setVisibility(View.GONE);
-        newPassword.setVisibility(View.GONE);
+//        oldUsername.setVisibility(View.GONE);
+//        newUsername.setVisibility(View.GONE);
+//        oldEmail.setVisibility(View.GONE);
+//        newEmail.setVisibility(View.GONE);
+//        password.setVisibility(View.GONE);
+//        newPassword.setVisibility(View.GONE);
         changeUsername.setVisibility(View.GONE);
         changeEmail.setVisibility(View.GONE);
         changePassword.setVisibility(View.GONE);
@@ -112,12 +112,12 @@ public class UserSettingsActivity extends AppCompatActivity {
         btnChangeUsername.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                oldUsername.setVisibility(View.GONE);
-                newUsername.setVisibility(View.VISIBLE);
-                oldEmail.setVisibility(View.GONE);
-                newEmail.setVisibility(View.GONE);
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.GONE);
+//                oldUsername.setVisibility(View.GONE);
+//                newUsername.setVisibility(View.VISIBLE);
+//                oldEmail.setVisibility(View.GONE);
+//                newEmail.setVisibility(View.GONE);
+//                password.setVisibility(View.GONE);
+//                newPassword.setVisibility(View.GONE);
                 changeUsername.setVisibility(View.VISIBLE);
                 changeEmail.setVisibility(View.GONE);
                 changePassword.setVisibility(View.GONE);
@@ -157,12 +157,12 @@ public class UserSettingsActivity extends AppCompatActivity {
         btnChangeEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                oldUsername.setVisibility(View.GONE);
-                newUsername.setVisibility(View.GONE);
-                oldEmail.setVisibility(View.GONE);
-                newEmail.setVisibility(View.VISIBLE);
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.GONE);
+//                oldUsername.setVisibility(View.GONE);
+//                newUsername.setVisibility(View.GONE);
+//                oldEmail.setVisibility(View.GONE);
+//                newEmail.setVisibility(View.VISIBLE);
+//                password.setVisibility(View.GONE);
+//                newPassword.setVisibility(View.GONE);
                 changeUsername.setVisibility(View.GONE);
                 changeEmail.setVisibility(View.VISIBLE);
                 changePassword.setVisibility(View.GONE);
@@ -215,12 +215,12 @@ public class UserSettingsActivity extends AppCompatActivity {
         btnChangePassword.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                oldUsername.setVisibility(View.GONE);
-                newUsername.setVisibility(View.GONE);
-                oldEmail.setVisibility(View.GONE);
-                newEmail.setVisibility(View.GONE);
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.VISIBLE);
+//                oldUsername.setVisibility(View.GONE);
+//                newUsername.setVisibility(View.GONE);
+//                oldEmail.setVisibility(View.GONE);
+//                newEmail.setVisibility(View.GONE);
+//                password.setVisibility(View.GONE);
+//                newPassword.setVisibility(View.VISIBLE);
                 changeUsername.setVisibility(View.GONE);
                 changeEmail.setVisibility(View.GONE);
                 changePassword.setVisibility(View.VISIBLE);
@@ -277,12 +277,12 @@ public class UserSettingsActivity extends AppCompatActivity {
         btnSendResetEmail.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                oldUsername.setVisibility(View.GONE);
-                newUsername.setVisibility(View.GONE);
-                oldEmail.setVisibility(View.VISIBLE);
-                newEmail.setVisibility(View.GONE);
-                password.setVisibility(View.GONE);
-                newPassword.setVisibility(View.GONE);
+//                oldUsername.setVisibility(View.GONE);
+//                newUsername.setVisibility(View.GONE);
+//                oldEmail.setVisibility(View.VISIBLE);
+//                newEmail.setVisibility(View.GONE);
+//                password.setVisibility(View.GONE);
+//                newPassword.setVisibility(View.GONE);
                 changeUsername.setVisibility(View.GONE);
                 changeEmail.setVisibility(View.GONE);
                 changePassword.setVisibility(View.GONE);

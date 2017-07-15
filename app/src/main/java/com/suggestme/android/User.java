@@ -12,13 +12,9 @@ public class User {
     int userRating;
     String email;
 
+
     public User() {
         //Empty Constructor For Firebase
-    }
-
-    public User(String email)
-    {
-
     }
 
     public User(String username, String password, int userRating, String email)

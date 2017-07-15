@@ -77,9 +77,7 @@ public class searchResult extends AppCompatActivity {
                     itemInfoShop=item.getShopName();
                     itemInfoDescription=item.getDesc();
 
-
                     String itemArr="Shop name: "+itemInfoShop+"\n"+"Description: "+itemInfoDescription+"\n";
-
 
                     if(itemInfoName.equalsIgnoreCase(getItemName))
                     {

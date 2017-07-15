@@ -15,6 +15,8 @@ import android.widget.ListView;
 
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -36,6 +38,8 @@ public class welcomeActivity extends AppCompatActivity {
     public Intent intent;
     String itemName;
     public Item item;
+    private FirebaseAuth.AuthStateListener authListener;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -114,23 +118,43 @@ public class welcomeActivity extends AppCompatActivity {
         });
 
 
-
-        /*button.setOnClickListener(new View.OnClickListener()
+        Button loginBtn=(Button) findViewById(R.id.loginBtu);
+        loginBtn.setOnClickListener(new View.OnClickListener()
         {
             @Override
             public void onClick(View v)
             {
+                //get firebase auth instance
+                auth = FirebaseAuth.getInstance();
 
-                String edUsername=itemName;
-                Intent intent1 = new Intent(welcomeActivity.this,searchResult.class);
-                intent1.putExtra("username",edUsername);//edUsername.getText().toString()
+
+                //get current user
+                final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                authListener = new FirebaseAuth.AuthStateListener() {
+                    @Override
+                    public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
+                        FirebaseUser user = firebaseAuth.getCurrentUser();
+                        if (user == null) {
+                            // user auth state is changed - user is null
+                            // launch login activity
+                            startActivity(new Intent(welcomeActivity.this, LoginActivity.class));
+                            finish();
+                        }
+                    }
+                };
+
+                Intent intent1 = new Intent(welcomeActivity.this, LoginActivity.class);
+                //intent1.putExtra("username",edUsername);//edUsername.getText().toString()
+                signOut();
                 startActivity(intent1);
                 //startActivity(new Intent(welcomeActivity.this, searchResult.class));
             }
-        });*/
+        });
 
 
     }
-
+    public void signOut() {
+        auth.signOut();
+    }
 
 }

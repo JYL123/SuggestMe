@@ -61,5 +61,16 @@
             android:layout_width="match_parent"
             android:layout_height="171dp" />
 
+        <Button
+            android:id="@+id/loginBtu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dip"
+            android:background="@null"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="15dp" />
+
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>

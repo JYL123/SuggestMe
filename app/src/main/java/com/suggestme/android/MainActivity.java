@@ -58,6 +58,9 @@ public class MainActivity extends AppCompatActivity {
 
         textView1 = (TextView) findViewById(R.id.textView1);
         textView2 = (TextView) findViewById(R.id.textView2);
+        commentBtn = (Button) findViewById(R.id.commentBtn);
+        rateBtn = (Button) findViewById(R.id.rateBtn);
+        userBtn = (Button) findViewById(R.id.setting); //setting
 
         final SharedPreferences.Editor editor = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE).edit();
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -66,7 +69,15 @@ public class MainActivity extends AppCompatActivity {
         final String getItemArr=getIntent().getExtras().getString("itemArr");
         final String getShopName=getIntent().getExtras().getString("shopName");
         final String getItemName=getIntent().getExtras().getString("itemName");
-        final String getEmail=getIntent().getExtras().getString("getEmail");
+        final String getEmail=getIntent().getExtras().getString("userEmail");
+        Log.e(getShopName,"Email from null");
+
+        if(getShopName.trim().equals(""))
+        {
+            Log.e("","disable");
+            rateBtn.setEnabled(false);
+            commentBtn.setEnabled(false);
+        }
 
         textView1.setText(getItemName);
         textView2.setText(getItemArr);
@@ -82,7 +93,11 @@ public class MainActivity extends AppCompatActivity {
         intent2.putExtra("shopName", getShopName);
         intent2.putExtra("itemName", getItemName);
         intent3.putExtra("userEmail", getEmail);
-        commentBtn = (Button) findViewById(R.id.commentBtn);
+        intent3.putExtra("itemArr", getItemArr);
+        intent3.putExtra("shopName", getShopName);
+        intent3.putExtra("itemName", getItemName);
+        Log.e(getEmail,"Email from main");
+
         commentBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
               // startActivity(new Intent(MainActivity.this, CommentActivity.class));
@@ -92,7 +107,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        rateBtn = (Button) findViewById(R.id.rateBtn);
+
         rateBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                // startActivity(new Intent(MainActivity.this, RateActivity.class));
@@ -102,7 +117,7 @@ public class MainActivity extends AppCompatActivity {
 
         });
 
-        userBtn = (Button) findViewById(R.id.changeUserNameButton);
+
         userBtn.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
                 // startActivity(new Intent(MainActivity.this, RateActivity.class))
@@ -111,6 +126,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
         });
+
 
     }
 

@@ -9,6 +9,7 @@ import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.text.TextUtils;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -51,17 +52,34 @@ public class LoginActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, text, duration);
 //        toast.show();
+        final String getItemArr;
+        final String getShopName;
+        final String getItemName;
 
-        final String getItemArr=getIntent().getExtras().getString("itemArr");
-        final String getShopName=getIntent().getExtras().getString("shopName");
-        final String getItemName=getIntent().getExtras().getString("itemName");
+        if( getIntent().getExtras() != null)
+        {
+            //do here
+            getItemArr=getIntent().getExtras().getString("itemArr");
+            getShopName=getIntent().getExtras().getString("shopName");
+            getItemName=getIntent().getExtras().getString("itemName");
+        }else
+        {
+            getItemArr="";
+            getShopName="";
+            getItemName="";
+        }
+
+
         intent = new Intent(LoginActivity.this, MainActivity.class);
         //i.putExtra("zurag", images);
         intent.putExtra("itemArr", getItemArr);
         intent.putExtra("shopName", getShopName);
         intent.putExtra("itemName", getItemName);
 
+
+        //Log.e(auth.getCurrentUser().getEmail(),"login getEmail");
         if (auth.getCurrentUser() != null) {
+            intent.putExtra("userEmail",auth.getCurrentUser().getEmail());
             startActivity(intent);
             finish();
         }else{
@@ -142,7 +160,8 @@ public class LoginActivity extends AppCompatActivity {
                                         Toast.makeText(LoginActivity.this, getString(R.string.auth_failed), Toast.LENGTH_LONG).show();
                                     }
                                 } else {
-                                    intent.putExtra("getEmail", email);
+                                    intent.putExtra("userEmail", email);
+                                    Log.e(email, "email from login");
                                     startActivity(intent);
                                     finish();
                                 }

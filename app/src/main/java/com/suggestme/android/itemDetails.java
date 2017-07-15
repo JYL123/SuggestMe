@@ -69,6 +69,8 @@ public class itemDetails extends AppCompatActivity {
         i2=new Intent(itemDetails.this, ViewComments.class);
         i2.putExtra("itemName", getItemName);
         i2.putExtra("shopName", getShopName);
+        Log.e("item name",getItemName);
+        Log.e("shop name",getShopName);
 
         buttonView = (Button) findViewById(R.id.buttonView);
         buttonView.setOnClickListener(new View.OnClickListener() {
