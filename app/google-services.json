@@ -1,0 +1,73 @@
+{
+  "project_info": {
+    "project_number": "703213945291",
+    "firebase_url": "https://orbital-9d29b.firebaseio.com",
+    "project_id": "orbital-9d29b",
+    "storage_bucket": "orbital-9d29b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703213945291:android:b0a3dae5df50703e",
+        "android_client_info": {
+          "package_name": "com.example.jasmine.orbital"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703213945291-bmtcq4c23dkhav798l2vmlsk03rq6uji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_m4rgC-TbThPMo8azr4izob7ZwUL5VeM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:703213945291:android:64f396427d8f3869",
+        "android_client_info": {
+          "package_name": "com.suggestme.android"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "703213945291-bmtcq4c23dkhav798l2vmlsk03rq6uji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA_m4rgC-TbThPMo8azr4izob7ZwUL5VeM"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
