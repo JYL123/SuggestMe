@@ -1,2 +1,2 @@
 # SuggestMe
-#A mobile app to giveus suggestion to users about online food.
+#A mobile app to give us suggestion to users about online food.
