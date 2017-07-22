@@ -173,6 +173,24 @@
         <dex dex="D:\SuggestMe\app\build\intermediates\pre-dexed\debug\classes_210a5205312d95b07dac067a75a6481a969b6d15.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="C:\Users\Jasmine\Downloads\NewSuggestMe\NewSuggestMe\app\build\intermediates\incremental-classes\debug\instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="e22b0a82a1abdbe6411c1cf181f6e8918b7892a4">
+        <dex dex="C:\Users\Jasmine\Downloads\NewSuggestMe\NewSuggestMe\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run-bootstrap_3a89a1a8142a18959c0a0db74e3b4f192818c6d2\classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="C:\Users\Jasmine\Downloads\NewSuggestMe\NewSuggestMe\app\build\intermediates\incremental-runtime-classes\debug\instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="25.0.3"
+        sha1="caff8e51a24901cfc9cd7e1cf83d84f4cb0c103b">
+        <dex dex="C:\Users\Jasmine\Downloads\NewSuggestMe\NewSuggestMe\app\build\intermediates\transforms\dex\debug\folders\1000\10000\instant-run_a25ce073bbb1642febbf77034131694eaec5c77c\classes.dex" />
+    </item>
+    <item
         is-multidex="false"
         jar="C:\Users\Jasmine\.android\build-cache\fb671daa63d9d45a300d908049b696a24c9d5368\output\jars\classes.jar"
         jumboMode="false"

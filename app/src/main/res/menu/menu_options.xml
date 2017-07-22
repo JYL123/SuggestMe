@@ -4,12 +4,13 @@
     <item android:id="@+id/home"
         android:icon="@drawable/ic_menu_send"
         android:title="Home" />
-    <item
-        android:id="@+id/back"
-        android:title="Back" />
 
     <item android:id="@+id/out"
         android:icon="@android:drawable/ic_menu_preferences"
         android:title="Sign Out" />
+
+    <item
+        android:id="@+id/back"
+        android:title="Back" />
 
 </menu>

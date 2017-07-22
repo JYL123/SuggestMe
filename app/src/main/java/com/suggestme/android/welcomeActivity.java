@@ -111,8 +111,8 @@ public class welcomeActivity extends AppCompatActivity {
             {
                 String selectedItem=listView.getItemAtPosition(position).toString();
                 Intent i = new Intent(welcomeActivity.this, searchResult.class);
-                //i.putExtra("zurag", images);
                 i.putExtra("itemName", selectedItem);
+                Log.e("jump to the next page", selectedItem);
 
                 startActivity(i);
             }

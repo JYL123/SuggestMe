@@ -14,7 +14,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -32,25 +34,20 @@ public class ViewComments extends AppCompatActivity {
     int rating,noRaters;
     ListView listView;
     public ArrayList<String> arr;
+    private FirebaseAuth auth;
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_view_comments);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
-        listView = (ListView) findViewById(R.id.listComment);
+        auth = FirebaseAuth.getInstance();
+       listView = (ListView) findViewById(R.id.listComment);
        final String getItemName=getIntent().getExtras().getString("itemName");
        final String getShopName=getIntent().getExtras().getString("shopName");
-        final String getItemShop=getItemName+getShopName;
+       final String getItemShop=getItemName+getShopName;
        Log.e(getShopName, "get name");
 
         final DatabaseReference mDatabase= FirebaseDatabase.getInstance().getReference("comments");
@@ -73,12 +70,9 @@ public class ViewComments extends AppCompatActivity {
                     if(getItemShop.equals(itemShopName))
                     {
                         comments=item.getComment();
-                      //  rating=item.getCommentRating();
-                      //  arr.add("Comments: "+comments+"\n"+"Rating: "+rating);
                         Log.e(comments, "comments");
                         arr.add("Comments: "+comments+"\n");
                         adapter.notifyDataSetChanged();
-                  //      break;
                     }
                     else
                     {
@@ -154,9 +148,12 @@ public class ViewComments extends AppCompatActivity {
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
             case R.id.out:
+                signOut();
+                Toast.makeText(getApplicationContext(), "You have signed out!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, LoginActivity.class));
                 return true;
             case R.id.back:
+                //startActivity(new Intent(this, itemDetails.class));
                 finish();
                 return true;
             default:
@@ -164,4 +161,7 @@ public class ViewComments extends AppCompatActivity {
         }
     }
 
+    public void signOut() {
+        auth.signOut();
+    }
 }

@@ -36,9 +36,6 @@ public class SignupActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_signup);
 
-        //Get Firebase auth instance
-//        final SharedPreferences sharedPreferences = getSharedPreferences("preferences", Context.MODE_PRIVATE);
-//        String userId = sharedPreferences.getString("userId", null);
 
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
         auth = FirebaseAuth.getInstance();
@@ -111,7 +108,7 @@ public class SignupActivity extends AppCompatActivity {
                                     String userId = mDatabase.push().getKey();
                                     User user = new User(username, password, 0,email);
                                     mDatabase.child(userId).setValue(user);
-                                    startActivity(new Intent(SignupActivity.this, MainActivity.class));
+                                    startActivity(new Intent(SignupActivity.this, LoginActivity.class));
                                     finish();
                                 }
                             }
@@ -120,6 +117,7 @@ public class SignupActivity extends AppCompatActivity {
             }
         });
     }
+
 
     @Override
     protected void onResume() {

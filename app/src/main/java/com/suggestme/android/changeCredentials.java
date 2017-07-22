@@ -8,6 +8,9 @@ import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -35,15 +38,7 @@ public class changeCredentials extends AppCompatActivity {
         setContentView(R.layout.activity_change_credentials);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
-//        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-//        fab.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-//                        .setAction("Action", null).show();
-//            }
-//        });
+        auth = FirebaseAuth.getInstance();
 
         final EditText displayEdit=(EditText) findViewById(R.id.DisplayEdit);
         final String getItemArr=getIntent().getExtras().getString("itemArr");
@@ -116,5 +111,36 @@ public class changeCredentials extends AppCompatActivity {
             }
         });
     }
+    //app bar
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
 
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_options, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        //respond to menu item selection
+        switch (item.getItemId()) {
+            case R.id.home:
+                startActivity(new Intent(this, welcomeActivity.class));
+                return true;
+            case R.id.out:
+                signOut();
+                Toast.makeText(getApplicationContext(), "You have signed out!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+            case R.id.back:
+                //startActivity(new Intent(this, MainActivity.class));
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
+    }
+    public void signOut() {
+        auth.signOut();
+    }
 }

@@ -50,11 +50,14 @@ public class MainActivity extends AppCompatActivity {
     private Intent intent1;
     private Intent intent2;
     private Intent intent3;
+    private FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        auth = FirebaseAuth.getInstance();
 
         textView1 = (TextView) findViewById(R.id.textView1);
         textView2 = (TextView) findViewById(R.id.textView2);
@@ -136,7 +139,6 @@ public class MainActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_options, menu);
         return super.onCreateOptionsMenu(menu);
-
     }
 
     @Override
@@ -147,12 +149,24 @@ public class MainActivity extends AppCompatActivity {
             case R.id.home:
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
-            case R.id.settings:
-                startActivity(new Intent(this, UserSettingsActivity.class));
+            case R.id.out:
+                signOut();
+                Toast.makeText(getApplicationContext(), "You have signed out!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+                return true;
+            case R.id.back:
+                //startActivity(new Intent(this, LoginActivity.class));
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
 
+    public void signOut() {
+        auth.signOut();
+    }
+
 }
+
+

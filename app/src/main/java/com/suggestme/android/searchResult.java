@@ -19,7 +19,9 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -45,6 +47,8 @@ public class searchResult extends AppCompatActivity {
     public ListView listView;
     Intent i;
     public HashMap<String, String> urlList;
+    private FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,6 +57,7 @@ public class searchResult extends AppCompatActivity {
         setContentView(R.layout.activity_search_result);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        auth = FirebaseAuth.getInstance();
 
         listView=(ListView)findViewById(R.id.listView1);
 
@@ -72,7 +77,6 @@ public class searchResult extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-                //listView((Item) dataSnapshot.getValue());
                 for(DataSnapshot dataItem: dataSnapshot.getChildren() )
                 {
                     Item item =dataItem.getValue(Item.class);
@@ -155,9 +159,12 @@ public class searchResult extends AppCompatActivity {
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
             case R.id.out:
+                signOut();
+                Toast.makeText(getApplicationContext(), "You have signed out!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, LoginActivity.class));
                 return true;
             case R.id.back:
+                //startActivity(new Intent(this, welcomeActivity.class));
                 finish();
                 return true;
             default:
@@ -165,5 +172,8 @@ public class searchResult extends AppCompatActivity {
         }
     }
 
+    public void signOut() {
+        auth.signOut();
+    }
 
 }

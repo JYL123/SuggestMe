@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
 
 
         Context context = getApplicationContext();
-        CharSequence text = "Log in before comment and rate :)";
+        CharSequence text = "Log in to enjoy more functions :)";
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, text, duration);
 
@@ -127,10 +127,6 @@ public class LoginActivity extends AppCompatActivity {
                 final String email = inputEmail.getText().toString();
                 final String password = inputPassword.getText().toString();
 
-//                if (TextUtils.isEmpty(username)) {
-//                    Toast.makeText(getApplicationContext(), "Enter username!", Toast.LENGTH_SHORT).show();
-//                    return;
-//                }
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(getApplicationContext(), "Enter email address!", Toast.LENGTH_SHORT).show();
@@ -174,31 +170,5 @@ public class LoginActivity extends AppCompatActivity {
         });
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.menu_options, menu);
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        //respond to menu item selection
-        switch (item.getItemId()) {
-            case R.id.home:
-                startActivity(new Intent(this, welcomeActivity.class));
-                return true;
-            case R.id.out:
-                startActivity(intent);
-                return true;
-            case R.id.back:
-                finish();
-                return true;
-            default:
-                return super.onOptionsItemSelected(item);
-        }
-    }
 }
 

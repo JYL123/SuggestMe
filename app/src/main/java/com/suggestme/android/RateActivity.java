@@ -14,6 +14,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.RatingBar;
+import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -48,7 +49,7 @@ public class RateActivity extends AppCompatActivity {
         final String getItemArr=getIntent().getExtras().getString("itemArr");
         final String getShopName=getIntent().getExtras().getString("shopName");
         final String getItemName=getIntent().getExtras().getString("itemName");
-        
+
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("ratings");
@@ -109,8 +110,6 @@ public class RateActivity extends AppCompatActivity {
 
                 final int rating = (int)ratingBar.getRating();
                 currRaters++;
-//                final String itemShop=getItemName+getShopName;
-
                 if (user != null) {
                     String commentId = mDatabase.push().getKey();
                     Rating newRating = new Rating(rating+currRating, getShopName, getItemName, username,currRaters,getItemName+getShopName);
@@ -149,7 +148,6 @@ public class RateActivity extends AppCompatActivity {
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
     }
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
@@ -167,14 +165,21 @@ public class RateActivity extends AppCompatActivity {
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
             case R.id.out:
+                signOut();
+                Toast.makeText(getApplicationContext(), "You have signed out!", Toast.LENGTH_SHORT).show();
                 startActivity(new Intent(this, LoginActivity.class));
                 return true;
             case R.id.back:
+                //startActivity(new Intent(this, MainActivity.class));
                 finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
     }
+
+    public void signOut() {
+        auth.signOut();
     }
+
 }

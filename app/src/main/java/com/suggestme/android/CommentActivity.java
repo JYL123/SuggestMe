@@ -58,11 +58,6 @@ public class CommentActivity extends AppCompatActivity {
 
         final Query userQuery = userDatabase.child("users").orderByChild("email").equalTo(user.getEmail());
 
-//        SharedPreferences prefs = getSharedPreferences(MY_PREFS_NAME, MODE_PRIVATE);
-//        final String username = prefs.getString("text", null);
-//        if (username != null) {
-//            String name = prefs.getString("username", "No name defined");//"No name defined" is the default value.
-//        }
         userQuery.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -118,8 +113,6 @@ public class CommentActivity extends AppCompatActivity {
     protected void showInputDialog() {
 
         // get prompts.xml view
-
-
         LayoutInflater layoutInflater = LayoutInflater.from(CommentActivity.this);
         View promptView = layoutInflater.inflate(R.layout.comment_dialog, null);
         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(CommentActivity.this,R.style.AlertDialogTheme);
@@ -168,27 +161,12 @@ public class CommentActivity extends AppCompatActivity {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
 
-//                        User currentUser = dataSnapshot.getValue(User.class);
-//                System.out.println(currentUser);
-//                        System.out.println("hello");
-              //  String credit="";
                 int credit=0;
                    for (DataSnapshot userRatingSnapshot : dataSnapshot.getChildren()) {
                        User currUser=userRatingSnapshot.getValue(User.class);
                        credit=currUser.getUserRating();
-                   //   credit = (String) userRatingSnapshot.child("username").getValue();
-
-//                //     String username = usernameSnapshot.getKey();
-               //  User credit= userRatingSnapshot.child("userRating").getValue(User.class);
-                     // creditView.setText(dataSnapshot.child("userRating").getValue());
-////
                 }
                 creditView.setText(Integer.toString(credit));
-//                Log.d("TEST","key: "+dataSnapshot.getKey());
-//                Log.d("TEST","value: "+dataSnapshot.getValue());
-                //  User currentUser= dataSnapshot.getValue(User.class);
-              //  int credit=currentUser.getUserRating();
-
             }
 
             @Override
@@ -211,18 +189,12 @@ public class CommentActivity extends AppCompatActivity {
         AlertDialog alert = alertDialogBuilder.create();
         alert.show();
         }
-    //}
-
-
-
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
 
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.menu_options, menu);
         return super.onCreateOptionsMenu(menu);
-
-
     }
 
     @Override
@@ -233,11 +205,21 @@ public class CommentActivity extends AppCompatActivity {
             case R.id.home:
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
-            case R.id.settings:
-                startActivity(new Intent(this, UserSettingsActivity.class));
+            case R.id.out:
+                signOut();
+                Toast.makeText(getApplicationContext(), "You have signed out!", Toast.LENGTH_SHORT).show();
+                startActivity(new Intent(this, LoginActivity.class));
+            case R.id.back:
+                //startActivity(new Intent(this, MainActivity.class));
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
+
+
+    public void signOut() {
+        auth.signOut();
     }
 }
