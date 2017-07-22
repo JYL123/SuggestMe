@@ -60,26 +60,28 @@
                 tools:layout_editor_absoluteY="117dp"
                 />
 
-            <Button
-                android:id="@+id/buttonView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_marginTop="10dp"
-                android:text="View Comment/Rating"
-                app:layout_anchor="@+id/include"
-                app:layout_anchorGravity="center_vertical|center_horizontal" />
+            <LinearLayout
+            android:id="@+id/btnLL"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true">
 
-            <Button
-                android:id="@+id/buttonComment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="center_vertical|center_horizontal"
-                android:layout_marginTop="25dp"
-                android:text="Add Comment/Rating"
-                app:layout_anchor="@+id/include"
-                app:layout_anchorGravity="center_vertical|center_horizontal" />
+             <Button
+               android:id="@+id/buttonView"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="View Comment/Rating" />
 
+             <Button
+               android:id="@+id/buttonComment"
+               android:layout_width="0dp"
+               android:layout_height="wrap_content"
+               android:layout_weight="1"
+               android:text="Add Comment/Rating" />
+          </LinearLayout>
+
+     </LinearLayout>
 
         </LinearLayout>
     </ScrollView>
