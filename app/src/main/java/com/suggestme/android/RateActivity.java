@@ -172,8 +172,11 @@ public class RateActivity extends AppCompatActivity {
             case R.id.home:
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
-            case R.id.settings:
+            case R.id.out:
                 startActivity(intent);
+                return true;
+            case R.id.back:
+                finish();
                 return true;
             default:
                 return super.onOptionsItemSelected(item);

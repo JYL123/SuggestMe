@@ -11,6 +11,9 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.util.Base64;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -133,6 +136,33 @@ public class searchResult extends AppCompatActivity {
         });
 
 
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.menu_options, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        //respond to menu item selection
+        switch (item.getItemId()) {
+            case R.id.home:
+                startActivity(new Intent(this, welcomeActivity.class));
+                return true;
+            case R.id.out:
+                startActivity(new Intent(this, LoginActivity.class));
+                return true;
+            case R.id.back:
+                finish();
+                return true;
+            default:
+                return super.onOptionsItemSelected(item);
+        }
     }
 
 

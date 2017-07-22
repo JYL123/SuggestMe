@@ -45,13 +45,13 @@ public class LoginActivity extends AppCompatActivity {
         //Get Firebase auth instance
         //final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("users");
         auth = FirebaseAuth.getInstance();
-        //     mFirebaseUser = FirebaseAuth.getCurrentUser();
+
 
         Context context = getApplicationContext();
         CharSequence text = "Log in before comment and rate :)";
         int duration = Toast.LENGTH_LONG;
         Toast toast = Toast.makeText(context, text, duration);
-//        toast.show();
+
         final String getItemArr;
         final String getShopName;
         final String getItemName;
@@ -71,18 +71,16 @@ public class LoginActivity extends AppCompatActivity {
 
 
         intent = new Intent(LoginActivity.this, MainActivity.class);
-        //i.putExtra("zurag", images);
         intent.putExtra("itemArr", getItemArr);
         intent.putExtra("shopName", getShopName);
         intent.putExtra("itemName", getItemName);
 
-
-        //Log.e(auth.getCurrentUser().getEmail(),"login getEmail");
         if (auth.getCurrentUser() != null) {
             intent.putExtra("userEmail",auth.getCurrentUser().getEmail());
             startActivity(intent);
             finish();
         }else{
+
             toast.show();
         }
 
