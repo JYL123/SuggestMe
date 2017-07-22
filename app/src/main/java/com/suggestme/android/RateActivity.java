@@ -31,6 +31,9 @@ public class RateActivity extends AppCompatActivity {
     private FirebaseAuth.AuthStateListener authListener;
     private FirebaseAuth auth;
     public String username;
+    public int currRating;
+    public int currRaters;
+    private Intent intent;
 
 
     @Override
@@ -41,6 +44,17 @@ public class RateActivity extends AppCompatActivity {
         submitBtn = (Button) findViewById(R.id.submitBtn);
         ratingBar = (RatingBar) findViewById(R.id.ratingBar);
         auth = FirebaseAuth.getInstance();
+
+        final String getItemArr=getIntent().getExtras().getString("itemArr");
+        final String getShopName=getIntent().getExtras().getString("shopName");
+        final String getItemName=getIntent().getExtras().getString("itemName");
+
+        intent = new Intent(new Intent(RateActivity.this, UserSettingsActivity.class));
+        //i.putExtra("zurag", images);
+        intent.putExtra("itemArr", getItemArr);
+        intent.putExtra("shopName", getShopName);
+        intent.putExtra("itemName", getItemName);
+
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("ratings");
@@ -66,18 +80,46 @@ public class RateActivity extends AppCompatActivity {
             }
         });
 
+        final Query ratingQuery = userDatabase.child("ratings").orderByChild("itemShop").equalTo(getItemName+getShopName);
+
+        ratingQuery.addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                int count=0;
+                for (DataSnapshot ratingSnapshot : dataSnapshot.getChildren()) {
+                    //     String username = usernameSnapshot.getKey();
+                    count++;
+                    Rating value=ratingSnapshot.getValue(Rating.class);
+                    currRating=value.getRating();
+                    currRaters=value.getNoOfRaters();
+                    Log.e("Current Rating" ,""+ currRating);
+                    Log.e("Current Raters" ,""+ currRaters);
+                }
+                if(count==0){
+                    currRating=0;
+                    currRaters=0;
+                }
+
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                Log.d("Rating", databaseError.getMessage());
+            }
+        });
+
         submitBtn.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
 
                 final int rating = (int)ratingBar.getRating();
-                final String getShopName=getIntent().getExtras().getString("shopName");
-                final String getItemName=getIntent().getExtras().getString("itemName");
+                currRaters++;
+//                final String itemShop=getItemName+getShopName;
 
                 if (user != null) {
                     String commentId = mDatabase.push().getKey();
-                    Rating newRating = new Rating(rating, getShopName, getItemName, username);
+                    Rating newRating = new Rating(rating+currRating, getShopName, getItemName, username,currRaters,getItemName+getShopName);
                     mDatabase.child(commentId).setValue(newRating);
                     showInputDialog();
                 }
@@ -131,7 +173,7 @@ public class RateActivity extends AppCompatActivity {
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
             case R.id.settings:
-                startActivity(new Intent(this, UserSettingsActivity.class));
+                startActivity(intent);
                 return true;
             default:
                 return super.onOptionsItemSelected(item);
