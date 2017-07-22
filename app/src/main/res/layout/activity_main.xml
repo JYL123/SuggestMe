@@ -6,13 +6,7 @@
     android:layout_height="match_parent"
     tools:context="com.suggestme.android.MainActivity">
 
-    <ScrollView
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
->
-
-
-    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="368dp"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -91,7 +85,6 @@
             android:text="Setting"
             android:textColor="@android:color/white"
             android:textStyle="bold" />
-        </LinearLayout>
-    </ScrollView>
+    </LinearLayout>
 
 </android.support.constraint.ConstraintLayout>

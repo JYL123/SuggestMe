@@ -42,12 +42,11 @@
         android:id="@+id/textView1"
         android:textColor="@color/black"
         android:textSize="25dp"
-        android:layout_width="match_parent"
+        android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_gravity="left"
-        android:layout_marginTop="10dp"
-        android:layout_marginLeft="15dp"
+        android:layout_marginTop="30dp"
         android:gravity="left"
         android:textAlignment="textStart" />
 
@@ -57,7 +56,7 @@
         android:layout_width="334dp"
         android:layout_height="467dp"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="15dp"
         android:gravity="center_horizontal"
         android:textAlignment="textStart"
         android:textColor="@color/black"

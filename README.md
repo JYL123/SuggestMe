@@ -12,4 +12,4 @@ Activate Developer option under Setting on your Android mobile phone, and connec
 Get going by running Android simulator directly on Android Studio.
 
 # Support
-For any feedback and suggestion, please send email to e0053139@u.nus.edu or e0052878@u.nus.edu Thank you.
+For any feedback and suggestion, please send email to e0053139@u.nus.edu. Thank you.

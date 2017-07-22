@@ -55,7 +55,7 @@ public class searchResult extends AppCompatActivity {
 
         TextView tv = (TextView) findViewById(R.id.textView1);
         final String getItemName=getIntent().getExtras().getString("itemName");
-        tv.setText("Shops for "+getItemName+" :");
+        tv.setText("  Shops for "+getItemName+" :");
         i = new Intent(searchResult.this, itemDetails.class);
         i.putExtra("itemName", getItemName);
 
@@ -116,7 +116,7 @@ public class searchResult extends AppCompatActivity {
                 String part1 = parts[0];
                 String part2= parts[1];
                 String[] partsList = part1.split(":");
-                String shopName= partsList[1].trim();
+                String shopName= partsList[1];
                 String itemDesc = parts[1];
                 String itemUrl=urlList.get(shopName);
                 //String itemURL =parts[2];
