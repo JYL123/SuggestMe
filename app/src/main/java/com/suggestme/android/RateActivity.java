@@ -48,13 +48,7 @@ public class RateActivity extends AppCompatActivity {
         final String getItemArr=getIntent().getExtras().getString("itemArr");
         final String getShopName=getIntent().getExtras().getString("shopName");
         final String getItemName=getIntent().getExtras().getString("itemName");
-
-        intent = new Intent(new Intent(RateActivity.this, UserSettingsActivity.class));
-        //i.putExtra("zurag", images);
-        intent.putExtra("itemArr", getItemArr);
-        intent.putExtra("shopName", getShopName);
-        intent.putExtra("itemName", getItemName);
-
+        
         //get current user
         final FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         final DatabaseReference mDatabase = FirebaseDatabase.getInstance().getReference("ratings");
@@ -173,7 +167,7 @@ public class RateActivity extends AppCompatActivity {
                 startActivity(new Intent(this, welcomeActivity.class));
                 return true;
             case R.id.out:
-                startActivity(intent);
+                startActivity(new Intent(this, LoginActivity.class));
                 return true;
             case R.id.back:
                 finish();
@@ -181,5 +175,6 @@ public class RateActivity extends AppCompatActivity {
             default:
                 return super.onOptionsItemSelected(item);
         }
+    }
     }
 }
