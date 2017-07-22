@@ -81,7 +81,7 @@
                android:text="Add Comment/Rating" />
           </LinearLayout>
 
-     </LinearLayout>
+
 
         </LinearLayout>
     </ScrollView>

@@ -7,6 +7,10 @@
     android:fitsSystemWindows="true"
     tools:context="com.suggestme.android.LoginActivity">
 
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
 
     <LinearLayout
         android:layout_width="fill_parent"
@@ -17,6 +21,14 @@
         android:padding="@dimen/activity_horizontal_margin"
         android:weightSum="1">
 
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center|top"
+            android:text="@string/welcomeText"
+            android:textColor="@color/input_login"
+            android:textSize="20dp" />
 
         <ImageView
             android:layout_width="@dimen/logo_w_h"
@@ -38,16 +50,6 @@
 
         </android.support.design.widget.TextInputLayout>
 
-        <Button
-            android:id="@+id/loginBtu"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="30dp"
-            android:background="@null"
-            android:text="Log in"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="20dp" />
 
         <!-- Search Bar -->
 
@@ -62,19 +64,19 @@
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="171dp" />
-        
-        
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
+
+
+        <Button
+            android:id="@+id/loginBtu"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:gravity="center|top"
-            android:text="@string/welcomeText"
-            android:textColor="@color/input_login"
+            android:layout_marginBottom="30dp"
+            android:background="@null"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
             android:textSize="20dp" />
 
-
-
-
     </LinearLayout>
+    </ScrollView>
 </android.support.design.widget.CoordinatorLayout>
