@@ -51,10 +51,6 @@
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity
-            android:name=".testActivity"
-            android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar" />
-        <activity
             android:name=".ViewComments"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar" />
