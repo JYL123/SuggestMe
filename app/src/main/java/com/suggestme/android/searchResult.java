@@ -55,7 +55,7 @@ public class searchResult extends AppCompatActivity {
 
         TextView tv = (TextView) findViewById(R.id.textView1);
         final String getItemName=getIntent().getExtras().getString("itemName");
-        tv.setText("  Shops for "+getItemName+" :");
+        tv.setText("Shops for "+getItemName+" :");
         i = new Intent(searchResult.this, itemDetails.class);
         i.putExtra("itemName", getItemName);
 

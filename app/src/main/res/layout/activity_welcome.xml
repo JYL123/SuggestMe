@@ -7,6 +7,7 @@
     android:fitsSystemWindows="true"
     tools:context="com.suggestme.android.LoginActivity">
 
+
     <LinearLayout
         android:layout_width="fill_parent"
         android:layout_height="fill_parent"
@@ -31,7 +32,7 @@
             android:layout_width="@dimen/logo_w_h"
             android:layout_height="65dp"
             android:layout_gravity="center_horizontal"
-            android:layout_marginBottom="30dp"
+            android:layout_marginBottom="10dp"
             android:gravity="center|top"
             android:src="@drawable/applogo" />
 
@@ -47,6 +48,17 @@
 
         </android.support.design.widget.TextInputLayout>
 
+        <Button
+            android:id="@+id/loginBtu"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="30dp"
+            android:background="@null"
+            android:text="Log in"
+            android:textAllCaps="false"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+
         <!-- Search Bar -->
 
         <SearchView
@@ -61,16 +73,7 @@
             android:layout_width="match_parent"
             android:layout_height="171dp" />
 
-        <Button
-            android:id="@+id/loginBtu"
-            android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dip"
-            android:background="@null"
-            android:text="Log in"
-            android:textAllCaps="false"
-            android:textColor="@color/white"
-            android:textSize="15dp" />
+
 
     </LinearLayout>
 </android.support.design.widget.CoordinatorLayout>
